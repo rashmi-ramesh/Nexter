@@ -1,0 +1,48 @@
+.realtors {
+    background-color: $color-secondary;
+    grid-column: col-start 7 / full-end;
+    padding: 3rem; //for spacing all round
+
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    row-gap: 2rem;
+    justify-items: center; //only the h3 elements gets affected by justify-items=center, because the width of the col is imparted by the list.
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: min-content max-content; 
+        //min-content = to acquire the width of image, max-content = to avoid line break
+
+        align-items: center;
+        row-gap: 5vh; //to make it responsive we use vh units
+        column-gap: 2rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: repeat(3, min-content max-content); //to arrange everything side by side, we use more than column tracks in repeat function 
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: min-content max-content; //same as previous
+            //min-content = to acquire the width of image, max-content = to avoid line break
+        }
+
+    }
+
+    &__img {
+        width: 7rem;
+        border-radius: 50%; //for round shape
+
+    }
+
+    &__sold {
+        text-transform: uppercase;
+        color: $color-grey-light-2;
+        margin-top: -3px; //inorder to push the text top, can use transform also
+    }
+
+}

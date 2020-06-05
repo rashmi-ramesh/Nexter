@@ -1,0 +1,75 @@
+.header {
+    background-color: $color-grey-dark-1;
+    grid-column: full-start / col-end 6;
+
+    background-image: linear-gradient(rgba($color-secondary, .93), rgba($color-secondary, .93)), url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    padding: 8rem;
+    padding-top: 4rem;
+
+    display: grid;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr; 
+    // grid-template-columns: max-content; //cannot be min-content bcoz it creates line-breaks and shrinks
+    //column width is set to max-width bcoz to reduce the emply spaces on both sides of the text
+    grid-template-columns: minmax(min-content, max-content); //for responsiveness
+    row-gap: 1.5rem;
+
+    justify-content: center; //to align the entire content in the center
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
+
+    &__logo {
+        height: 3rem;
+        justify-self: center;
+    }
+
+    &__btn {
+        align-self: start;
+        justify-self: start;
+    }
+
+    &__seenon-text {
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+
+        display: grid; //to align the before, after and real elements in one line
+        grid-template-columns: 1fr max-content 1fr; //max-content doesnot give any line breaks to the text like min-content
+        align-items: center;
+        column-gap: 1.5rem;
+
+        &::before,
+        &::after {
+            content: "";
+            height: 1px;
+            background-color: currentColor; //inherits the color on itself or its parent
+            display: block; //occupies new line, avoids inline properties
+        }
+
+    }
+
+    &__seenon-logos {
+
+        display: grid; //to place the logos in a grid
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 3rem;
+        justify-items: center; //to center the items in each grid cell
+        align-items: center;
+
+        img {
+            max-height: 2.5rem; //to make logos look uniform, we giv max-h as 2.5rem, but it also can be less than that
+            max-width: 100%; //width can be max 100%, but it also can be less than that
+            filter: brightness(70%); //to make it greyish
+        }
+
+    }
+
+}
+
